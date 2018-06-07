@@ -30,6 +30,8 @@ var Enemy = function(x,y,speed) {
 function reset(){
     totalSecs  = 0;
     level.innerHTML = '0';
+    player.x = 202; // re-aligns position.1
+    player.y = 405;
 }
 
 // reset event
@@ -68,10 +70,10 @@ Enemy.prototype.update = function(dt) {
 
     // the collision between player and enemies
 
-    if (player.x < this.x + 60 &&
-        player.x + 37 > this.x &&
-        player.y < this.y + 25 &&
-        30 + player.y > this.y) {
+    if (player.x < this.x + 75 &&
+        player.x + 47 > this.x &&
+        player.y < this.y + 35 &&
+        35 + player.y > this.y) {
         player.x = 202; // re-aligns position.1
         player.y = 405; // re-aligns position.2
         score = 0 ;     // reset score
