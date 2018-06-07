@@ -20,10 +20,18 @@ Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
 
     // reset the position of the enemies , they reappear randomly with different speeds 
-    if (this.x>500){
-        this.x -=100;
-        this.speed = 100+Math.floor(Math.random() * 500);
+    if (this.x > 500){
+        this.x -= 495;
+        this.speed = 150 + Math.floor(Math.random() * 250);
     }
+
+    // if (player.x < this.x + 60 &&
+    //     player.x + 37 > this.x &&
+    //     player.y < this.y + 25 &&
+    //     30 + player.y > this.y) {
+    //     player.x = 200; // re-aligns position.1
+    //     player.y = 400; // re-aligns position.2
+    // }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -36,10 +44,9 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
-var Player = function( x , y , speed ) {
+var Player = function( x , y ) {
     this.x = x ;
-    this.y = y ;
-    this.speed = speed; 
+    this.y = y ; 
 
     this.sprite = 'images/char-horn-girl.png';
 }
@@ -53,21 +60,21 @@ Player.prototype.render = function() {
 }
 
 Player.prototype.handleInput = function (keyPress) {
-    if (keyPress='left' && this.x > 0 ) {
+    if (keyPress == 'left' && this.x > 0 ) {
         this.x -= 102 ;
-    }
+    };
 
-    if (keyPress='right' && this.x < 405  ) {
-        this.x += 102 ;
-    }
+    if (keyPress == 'right' && this.x < 405) {
+        this.x += 102;
+    };
 
-    if (keyPress='up' && this.y > 0 ) {
-        this.x -= 83 ;
-    }
+    if (keyPress == 'up' && this.y > 0 ) {
+        this.y -= 83 ;
+    };
 
-    if (keyPress='down' && this.y > 405 ) {
-        this.x += 83 ;
-    }
+    if (keyPress == 'down' && this.y < 405 ) {
+        this.y += 83 ;
+    };
 }
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -76,16 +83,16 @@ Player.prototype.handleInput = function (keyPress) {
 var allEnemies = [];
 
 // Location of the 3 enemies on the y axis located on the stone road
-var enemyLocation = [63, 147, 230];
+var enemyPosition = [63, 147, 230];
 
-enemyLocation.forEach(function(posY) {
-    enemy = new Enemy(0, posY, 100 + Math.floor(Math.random() * 499));
+enemyPosition.forEach(function(posY) {
+    enemy = new Enemy(0, posY, 200);
     allEnemies.push(enemy);
 });
 
 
 // The starting location of the player is located at x=200, y=405
-var player = new Player(202, 405, 50);
+var player = new Player(202, 405);
 
 
 // This listens for key presses and sends the keys to your
