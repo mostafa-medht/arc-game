@@ -39,7 +39,7 @@ Enemy.prototype.render = function() {
 var Player = function( x , y , speed ) {
     this.x = x ;
     this.y = y ;
-    this.speed ; 
+    this.speed = speed; 
 
     this.sprite = 'images/char-horn-girl.png';
 }
@@ -85,7 +85,7 @@ enemyLocation.forEach(function(posY) {
 
 
 // The starting location of the player is located at x=200, y=405
-var player = new Player(202, 405);
+var player = new Player(202, 405, 50);
 
 
 // This listens for key presses and sends the keys to your
